@@ -1,4 +1,4 @@
-package com.liyuanqing.base.user.ctrl;
+package com.liyuanqing.user.ctrl;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
