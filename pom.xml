@@ -24,7 +24,7 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-core</artifactId>
-        </dependency>
+        </dependency>   
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -50,7 +50,12 @@
             <artifactId>ooxml-schemas</artifactId>
             <version>1.1</version>
         </dependency>
-
+        <!-- Drools 规则引擎 -->
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <version>7.6.0.Final</version>
+        </dependency>
     </dependencies>
 
     <build>

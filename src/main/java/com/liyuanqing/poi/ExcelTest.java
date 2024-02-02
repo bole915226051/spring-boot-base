@@ -151,7 +151,7 @@ public class ExcelTest {
      * @param offset   偏移量，如果给0，表示从A列开始，1，就是从B列
      * @param rowId    第几行
      * @param colCount 一共多少列
-     * @return 如果给入参 1,1,10. 表示从B1-K1。最终返回 $B$1:$K$1
+     * @return 如果给入参 1,1,10. 表示从B1-K1。最终返回 $BService$1:$K$1
      */
     public static String getRange(int offset, int rowId, int colCount) {
         char start = (char) ('A' + offset);
