@@ -19,9 +19,10 @@ public class Run {
             UserService userService = context.getBean(UserService.class);
             System.out.println(userService.getUserName("张三"));
         }).start();
-        new Thread(()->{
+        new Thread(() -> {
             UserService userService = context.getBean(UserService.class);
             System.out.println(userService.getUserName("李四"));
         }).start();
+        context.close();
     }
 }
