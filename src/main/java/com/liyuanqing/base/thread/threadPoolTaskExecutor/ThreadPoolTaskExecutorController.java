@@ -1,4 +1,4 @@
-package com.liyuanqing.base.threadPool;
+package com.liyuanqing.base.thread.threadPoolTaskExecutor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/threadPoolExecutor")
-public class ThreadPoolExecutorController {
+public class ThreadPoolTaskExecutorController {
     @Autowired
-    private ThreadPoolService threadPoolService;
+    private ThreadPoolTaskService threadPoolTaskService;
 
     @RequestMapping(value = "/ctrl", method = RequestMethod.GET)
     public String testOne(@RequestParam("param") String param) {
         for (int i = 0; i < 5; i++) {
-            threadPoolService.demoMyPool(param);
+            threadPoolTaskService.demoMyPool(param);
 //            try {
 //                Thread.sleep(500);
 //            } catch (InterruptedException e) {
