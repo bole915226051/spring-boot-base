@@ -2,7 +2,6 @@ package com.liyuanqing.base.threadPool;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
@@ -14,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * 自定义创建线程池.
  * todo 线程池一些常见的问题?
  * 1.线程池都有哪些核心线程数?
- * 答:
+ * 答:1、核心线程数、2、最大线程数、3、最大线程数空闲等待时间、4、时间单位、5、线程工厂、6、队列容量、7、拒绝策略
  * 2.工作队列中常见的有界队列 和 无界队列的区别是什么?
  * 答:
  * 3.线程工程有什么作用?都有哪些线程?
@@ -52,7 +51,7 @@ public class ThreadPoolExecutorConfig {
         public AbortPolicy() {
         }
 
-
+        @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
             throw new RejectedExecutionException("线程池最大线程数已经满了,队列容量也满了,任务不再接收.");
         }
