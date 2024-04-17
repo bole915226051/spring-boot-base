@@ -20,6 +20,7 @@ public class ThreadController {
      *  - 混合任务: CPU核心数 * (1 + 线程等待时间 / 线程全量执行时间)
      *      = 这些都是理论上设置核心线程数的最优解,但是因为 实际的机器没有那么干净,会有其他线程占用CPU,所以最后就是进行压测,来计算最适合的数量.
      *      = 比如 设置当前应用的最大线程数,然后sleep住,通过压测,计算最优解.
+     *          = PostMan不支持压力测试
      * @return
      */
     @RequestMapping(value = "/stressTestOptimalThreadNum",method = RequestMethod.GET)
