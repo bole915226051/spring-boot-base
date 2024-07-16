@@ -30,13 +30,13 @@ public class BaseApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Faker faker = Faker.instance(new Random());
-        int count = userMapper.insert(User.builder()
-                .username(faker.name().fullName())
-                .phone(faker.phoneNumber().cellPhone())
-                .build());
-        log.info("插入数据条数:count={}", count);
-        List<User> userList = userMapper.selectList();
-        log.info("查询数据:{}", JSON.toJSONString(userList));
+//        Faker faker = Faker.instance(new Random());
+//        int count = userMapper.insert(User.builder()
+//                .username(faker.name().fullName())
+//                .phone(faker.phoneNumber().cellPhone())
+//                .build());
+//        log.info("插入数据条数:count={}", count);
+//        List<User> userList = userMapper.selectList();
+//        log.info("查询数据:{}", JSON.toJSONString(userList));
     }
 }
