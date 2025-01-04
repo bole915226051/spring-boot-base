@@ -9,13 +9,13 @@ public class UserController {
 
     @RequestMapping("/testOne")
     public String testOne() {
-        return "第一个入口";
+        return "李源青是张孝涵的爹~";
     }
 
 
     @RequestMapping("/testTwo")
     public String testTwo() {
-        return "出现分支问题.";
+        return "李源青是张孝涵的爹2~";
     }
 
 }
