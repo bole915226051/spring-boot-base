@@ -5,6 +5,6 @@ package com.liyuanqing.base.string;
  */
 public class StringDemo {
     public static void main(String[] args) {
-        "A".hashCode();
+        System.out.println("A".hashCode());
     }
 }
