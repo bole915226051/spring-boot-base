@@ -1,11 +1,7 @@
 package com.liyuanqing;
 
-import com.alibaba.fastjson.JSON;
-import com.github.javafaker.Faker;
-import com.liyuanqing.myBatis.entity.User;
 import com.liyuanqing.myBatis.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -13,9 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.scheduling.annotation.EnableAsync;
-
-import java.util.List;
-import java.util.Random;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 //  启用异步
@@ -31,6 +24,7 @@ public class BaseApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        log.info("这是打印的日志docker run -p 8082:8082 -d mac-base:{}", Thread.currentThread().getName());
 //        Faker faker = Faker.instance(new Random());
 //        int count = userMapper.insert(User.builder()
 //                .username(faker.name().fullName())
