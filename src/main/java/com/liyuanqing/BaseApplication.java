@@ -24,6 +24,7 @@ public class BaseApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        // demo代码提交
         log.info("这是打印的日志docker run -p 8082:8082 -d mac-base:{}", Thread.currentThread().getName());
 //        Faker faker = Faker.instance(new Random());
 //        int count = userMapper.insert(User.builder()
