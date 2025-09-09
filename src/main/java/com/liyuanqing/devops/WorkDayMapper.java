@@ -1,7 +1,5 @@
-package com.liyuanqing.myBatis.mapper;
+package com.liyuanqing.devops;
 
-import com.liyuanqing.myBatis.entity.User;
-import com.liyuanqing.myBatis.entity.WorkDay;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

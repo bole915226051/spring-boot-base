@@ -1,4 +1,4 @@
-package com.liyuanqing.date;
+package com.liyuanqing.devops;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -94,7 +94,7 @@ public class HolidayUtil {
             holidayVo.setData(dateTime);
             String STATUS = "2";
             String msg = "法定节假日(" + value1.get("name").toString() + ")";
-            if (value.toString().contains("调休")) {
+            if (!(boolean) value1.get("holiday")) {
                 STATUS = "3";
                 msg = "节假日调休补班(" + value1.get("target").toString() + ")";
             }

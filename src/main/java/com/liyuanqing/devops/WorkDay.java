@@ -1,4 +1,4 @@
-package com.liyuanqing.myBatis.entity;
+package com.liyuanqing.devops;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
