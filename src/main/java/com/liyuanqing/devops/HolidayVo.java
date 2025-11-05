@@ -1,8 +1,14 @@
 package com.liyuanqing.devops;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class HolidayVo {
     private String data;//日期
 

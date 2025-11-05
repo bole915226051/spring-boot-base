@@ -63,15 +63,15 @@ public class HolidayUtil {
         allDayDataList.forEach((value) -> {
             HolidayVo holidayVo = new HolidayVo();
 
-            Map value1 = (Map) value;
-            String YEAR = value1.get("year").toString();
-            String MONTH = value1.get("month").toString().replace(YEAR, "");
-            String DAY = value1.get("date").toString().replace(YEAR + MONTH, "");
+            Map dayVO = (Map) value;
+            String YEAR = dayVO.get("year").toString();
+            String MONTH = dayVO.get("month").toString().replace(YEAR, "");
+            String DAY = dayVO.get("date").toString().replace(YEAR + MONTH, "");
 
             holidayVo.setData(YEAR + "-" + MONTH + "-" + DAY);
             String STATUS = "0";
             String msg = "工作日";
-            if ("1".equals(value1.get("weekend").toString())) {
+            if ("1".equals(dayVO.get("weekend").toString())) {
                 STATUS = "1";
                 msg = "周末";
             }
@@ -80,29 +80,63 @@ public class HolidayUtil {
 
             hashMap.put(holidayVo.getData(), holidayVo);
         });
+        //  API获取法定假日暂时没有维护，使用自己手写的方法吧
+        if ("2026".equals(year)) {
+            List<HolidayVo> holidayVos = new ArrayList<>();
+            holidayVos.add(HolidayVo.builder().data("2026-01-01").status("2").msg("法定节假日(元旦)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-01-02").status("2").msg("法定节假日(元旦)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-01-03").status("2").msg("法定节假日(元旦)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-01-04").status("3").msg("节假日调休补班(元旦)").build());
 
-        //查询全年节假日、调休
-        String holidayJson = HolidayUtil.get("https://timor.tech/api/holiday/year/" + year + "/");
-        Map holidayMap = mapper.readValue(holidayJson, Map.class);
-        LinkedHashMap holidayList = (LinkedHashMap) holidayMap.get("holiday");
-        holidayList.forEach((key, value) -> {
-            HolidayVo holidayVo = new HolidayVo();
+            holidayVos.add(HolidayVo.builder().data("2026-02-15").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-16").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-17").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-18").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-19").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-20").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-21").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-22").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-23").status("2").msg("法定节假日(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-14").status("3").msg("节假日调休补班(春节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-02-28").status("3").msg("节假日调休补班(春节)").build());
 
-            Map value1 = (Map) value;
-            String dateTime = value1.get("date").toString();
+            holidayVos.add(HolidayVo.builder().data("2026-04-04").status("2").msg("法定节假日(清明节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-04-05").status("2").msg("法定节假日(清明节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-04-06").status("2").msg("法定节假日(清明节)").build());
 
-            holidayVo.setData(dateTime);
-            String STATUS = "2";
-            String msg = "法定节假日(" + value1.get("name").toString() + ")";
-            if (!(boolean) value1.get("holiday")) {
-                STATUS = "3";
-                msg = "节假日调休补班(" + value1.get("target").toString() + ")";
+            holidayVos.add(HolidayVo.builder().data("2026-05-01").status("2").msg("法定节假日(劳动节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-05-02").status("2").msg("法定节假日(劳动节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-05-03").status("2").msg("法定节假日(劳动节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-05-04").status("2").msg("法定节假日(劳动节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-05-05").status("2").msg("法定节假日(劳动节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-05-09").status("3").msg("节假日调休补班(劳动节)").build());
+
+            holidayVos.add(HolidayVo.builder().data("2026-06-19").status("2").msg("法定节假日(端午节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-06-20").status("2").msg("法定节假日(端午节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-06-21").status("2").msg("法定节假日(端午节)").build());
+
+            holidayVos.add(HolidayVo.builder().data("2026-09-25").status("2").msg("法定节假日(中秋节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-09-26").status("2").msg("法定节假日(中秋节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-09-27").status("2").msg("法定节假日(中秋节)").build());
+
+            holidayVos.add(HolidayVo.builder().data("2026-10-01").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-02").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-03").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-04").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-05").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-06").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-07").status("2").msg("法定节假日(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-09-20").status("3").msg("节假日调休补班(国庆节)").build());
+            holidayVos.add(HolidayVo.builder().data("2026-10-10").status("3").msg("节假日调休补班(国庆节)").build());
+
+
+            for (HolidayVo vo : holidayVos) {
+                hashMap.replace(vo.getData(), vo);
             }
-            holidayVo.setStatus(STATUS);
-            holidayVo.setMsg(msg);
+        } else {
+            apiStatutoryHoliday(year, hashMap, mapper);
+        }
 
-            hashMap.replace(holidayVo.getData(), holidayVo);
-        });
 
         for (String key : hashMap.keySet()) {
             holidayVoList.add(hashMap.get(key));
@@ -120,6 +154,31 @@ public class HolidayUtil {
         });
 
         return holidayVoList;
+    }
+
+    private static void apiStatutoryHoliday(String year, HashMap<String, HolidayVo> hashMap, ObjectMapper mapper) throws com.fasterxml.jackson.core.JsonProcessingException {
+        //查询全年节假日、调休
+        String holidayJson = HolidayUtil.get("https://timor.tech/api/holiday/year/" + year + "/");
+        Map holidayMap = mapper.readValue(holidayJson, Map.class);
+        LinkedHashMap holidayList = (LinkedHashMap) holidayMap.get("holiday");
+        holidayList.forEach((key, value) -> {
+            HolidayVo holidayVo = new HolidayVo();
+
+            Map dayVO = (Map) value;
+            String dateTime = dayVO.get("date").toString();
+
+            holidayVo.setData(dateTime);
+            String STATUS = "2";
+            String msg = "法定节假日(" + dayVO.get("name").toString() + ")";
+            if (!(boolean) dayVO.get("holiday")) {
+                STATUS = "3";
+                msg = "节假日调休补班(" + dayVO.get("target").toString() + ")";
+            }
+            holidayVo.setStatus(STATUS);
+            holidayVo.setMsg(msg);
+
+            hashMap.replace(holidayVo.getData(), holidayVo);
+        });
     }
 
     public static void main(String[] args) {
